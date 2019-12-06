@@ -5,7 +5,7 @@ I do a lot of .NET development. I also like my repository automatically set up f
 In your repository root, you can run the following command to fetch (or update) the solution support files.
 
 ``` sh
-curl -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/AllRules.ruleset" -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Build.props" -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Meta.props" -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Nullable.props"
+curl -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/AllRules.ruleset" -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Build.props" -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Meta.props"
 ```
 
 My default solution directory structure:
