@@ -92,3 +92,11 @@ This is only useful for multi-targeting projects as single target projects will 
 ### Enable SourceLink
 
 `Directory.Build.props` also includes the necessary settings for SourceLink.
+
+## C# 8 Nullable support for pre .NET Standard 2.1
+
+Add the `Directory.Nullable.props` file next to the `Directory.Build.props` file in your repository. It will enable usage of Nullable reference types and also make it possible to use extended nullability annotation attributes in projects targeting TFMs before .NET Standard 2.1 (or .NET Core App 3.0).
+
+``` sh
+curl -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Nullable.props"
+```
