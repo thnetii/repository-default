@@ -5,7 +5,7 @@ I do a lot of .NET development. I also like my repository automatically set up f
 In your repository root, you can run the following command to fetch (or update) the solution support files.
 
 ``` sh
-curl -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/AllRules.ruleset" -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Build.props" -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Meta.props"
+curl -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/AllRules.ruleset" -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Build.props" -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Meta.props" -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Version.props"
 ```
 
 My default solution directory structure:
@@ -100,3 +100,10 @@ Add the `Directory.Nullable.props` file next to the `Directory.Build.props` file
 ``` sh
 curl -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Nullable.props"
 ```
+
+## Package versioning
+
+Package versioning can be done at the repository root level, or per-project. Add the `Directory.Version.props` file in one of the following ways
+
+* As `Directory.Version.props` next to the `Directory.Build.props` file.
+* As `Directory.Build.props` in the directory of the project you want to apply the version specification to. The file will subsequently import `Directory.Build.props` from the folder structure above its path if it exists.
