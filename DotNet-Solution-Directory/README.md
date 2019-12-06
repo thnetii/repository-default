@@ -91,4 +91,4 @@ This is only useful for multi-targeting projects as single target projects will 
 
 ### Enable SourceLink
 
-`Directory.Build.props` also includes the necessary settings for SourceLink. This also sets the NuGet packages to emit pdb files on pack.
+`Directory.Build.props` also includes the necessary settings for SourceLink.
