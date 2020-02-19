@@ -1,5 +1,8 @@
 root = true
 
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = true
+
 # Defaults
 [*]
 indent_size = 4
