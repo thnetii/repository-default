@@ -1,4 +1,4 @@
-- package_manager: "dotnet:nuget"
+- package_manager: "javascript"
   directory: /
   update_schedule: live
   default_assignees:
