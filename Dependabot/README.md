@@ -8,12 +8,12 @@ First run the following command to create and prime the `config.yml` file:
 
 **Windows**
 ``` bat
-MD .dependabot && curl -LRJ -o .dependabot\config.yml "https://github.com/thnetii/repository-default/raw/master/Dependabot/default.config.yml"
+MD .dependabot & curl -LRJ -o .dependabot\config.yml "https://github.com/thnetii/repository-default/raw/master/Dependabot/default.config.yml"
 ```
 **Linux**
 ``` sh
 mkdir -p .dependabot \
-&& curl -LRJ -o .dependabot\config.yml "https://github.com/thnetii/repository-default/raw/master/Dependabot/default.config.yml"
+& curl -LRJ -o .dependabot\config.yml "https://github.com/thnetii/repository-default/raw/master/Dependabot/default.config.yml"
 ```
 
 ## Language specific configuration
