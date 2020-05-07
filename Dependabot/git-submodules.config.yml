@@ -2,7 +2,7 @@
   directory: /
   update_schedule: daily
   default_assignees:
-  - couven92
+  - fredrikhr
   automerged_updates:
   - match:
       update_type: "all"
