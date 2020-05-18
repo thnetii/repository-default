@@ -2,6 +2,8 @@
 <Project>
   <PropertyGroup>
     <LangVersion>8</LangVersion>
+    <Nullable Condition="  '$(TargetFrameworkIdentifier)' == '.NETCoreApp' AND '$(_TargetFrameworkVersionWithoutV)' &gt;= '3.0' ">enable</Nullable>
+    <Nullable Condition="!('$(TargetFrameworkIdentifier)' == '.NETCoreApp' AND '$(_TargetFrameworkVersionWithoutV)' &gt;= '3.0')">annotations</Nullable>
   </PropertyGroup>
   <ItemGroup Condition="
              ('$(TargetFrameworkIdentifier)' == '.NETCoreApp' AND '$(_TargetFrameworkVersionWithoutV)' &lt; '3.0') OR
