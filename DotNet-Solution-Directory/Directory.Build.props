@@ -14,7 +14,7 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
-<PropertyGroup Label="Nullable Reference Types">
+  <PropertyGroup Label="Nullable Reference Types">
     <LangVersion>8</LangVersion>
     <Nullable Condition="
               ('$(TargetFrameworkIdentifier)' == '.NETCoreApp'  AND '$(_TargetFrameworkVersionWithoutV)' &gt;= '3.0') OR
