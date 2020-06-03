@@ -1,4 +1,15 @@
-Get-ChildItem -Recurse -File | ForEach-Object {
+$ExcludePaths = @("obj", "bin", ".vs") | ForEach-Object {
+    Join-Path "*" $(Join-Path $_ "*")
+}
+
+Get-ChildItem -Recurse -File | Where-Object {
+    foreach ($ex in $ExcludePaths) {
+        if ($_.FullName -ilike $ex) {
+            return $false
+        }
+    }
+    return $true
+} | ForEach-Object {
     Write-Host $(Resolve-Path -Relative $_.FullName)
     [string[]]$content = $_ | Get-Content
     # PowerShell before PowerShell Core v6.0 does not support utf8NoBOM as Encoding
