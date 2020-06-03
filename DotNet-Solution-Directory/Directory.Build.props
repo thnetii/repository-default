@@ -30,7 +30,7 @@
              ('$(TargetFrameworkIdentifier)' == '.NETStandard' AND '$(_TargetFrameworkVersionWithoutV)' &lt; '2.1') OR
              ('$(TargetFrameworkIdentifier)' == '.NETFramework')"
              >
-    <PackageReference Include="Nullable" Version="1.1.1">
+    <PackageReference Include="Nullable" Version="1.2.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
