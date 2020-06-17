@@ -5,7 +5,7 @@ I do a lot of .NET development. I also like my repository automatically set up f
 In your repository root, you can run the following command to fetch (or update) the solution support files.
 
 ``` sh
-curl -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/AllRules.ruleset" -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Build.props" -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Meta.props" -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Version.props"
+curl -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/AllRules.ruleset" -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Build.props" -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Meta.props" -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Version.props" -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Build.targets"
 ```
 
 My default solution directory structure:
@@ -35,7 +35,6 @@ root
 ├─ README.md
 ├─ AllRules.ruleset (synced from here)
 ├─ Directory.Build.props (synced from here)
-├─ Directory.Nullable.props (individual extension for Directory.Build.props)
 ├─ Directory.Build.targets (synced from here)
 ├─ Directory.Meta.props (individual extension for Directory.Build.props)
 ├─ Directory.Version.props (individual extension for Directory.Build.props)
@@ -95,11 +94,7 @@ This is only useful for multi-targeting projects as single target projects will 
 
 ## C# 8 Nullable support for pre .NET Standard 2.1
 
-Add the `Directory.Nullable.props` file next to the `Directory.Build.props` file in your repository. It will enable usage of Nullable reference types and also make it possible to use extended nullability annotation attributes in projects targeting TFMs before .NET Standard 2.1 (or .NET Core App 3.0).
-
-``` sh
-curl -LORJ "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Nullable.props"
-```
+The `Directory.Build.targets` file next to the `Directory.Build.props` file in your repository will enable usage of Nullable reference types and also make it possible to use extended nullability annotation attributes in projects targeting TFMs before .NET Standard 2.1 (or .NET Core App 3.0).
 
 ## Package versioning
 
