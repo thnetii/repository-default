@@ -1,15 +1,10 @@
-$ExcludePaths = @("obj", "bin", ".vs") | ForEach-Object {
-    Join-Path "*" $(Join-Path $_ "*")
-}
+[CmdletBinding()]
+param ()
 
-Get-ChildItem -Recurse -File | Where-Object {
-    foreach ($ex in $ExcludePaths) {
-        if ($_.FullName -ilike $ex) {
-            return $false
-        }
-    }
-    return $true
-} | ForEach-Object {
+$PSCmdlet.WriteVerbose("Invoking command `"git ls-files`" on repository `"$(Get-Location)`".")
+[string[]]$GitFiles = & git ls-files
+
+Get-ChildItem -File -Path $GitFiles | ForEach-Object {
     Write-Host $(Resolve-Path -Relative $_.FullName)
     [string[]]$content = $_ | Get-Content
     # PowerShell before PowerShell Core v6.0 does not support utf8NoBOM as Encoding
@@ -17,15 +12,15 @@ Get-ChildItem -Recurse -File | Where-Object {
         $encoding = [System.Text.UTF8Encoding]::new($false) # create UTF8 Encoding with no BOM
         if ($content -and $content.Length -gt 0)
         { 
-            Write-Verbose "Performing the operation `"WriteAllLines`" on target `"Path: $($_.FullName)`" using text encoding $($encoding.WebName)."
+            $PSCmdlet.WriteVerbose("Performing the operation `"WriteAllLines`" on target `"Path: $($_.FullName)`" using text encoding $($encoding.WebName).")
             [System.IO.File]::WriteAllLines($_.FullName, $content, $encoding)
         }
         else {
             [byte[]]$emptyArray = [System.Array]::CreateInstance([byte], 0)
-            Write-Verbose "Performing the operation `"Truncate File`" on target `"Path: $($_.FullName)`"."
+            $PSCmdlet.WriteVerbose("Performing the operation `"Truncate File`" on target `"Path: $($_.FullName)`".")
             [System.IO.File]::WriteAllBytes($_.FullName, $emptyArray)
         }
     } else {
-        $_ | Set-Content -Verbose -Value $content -Encoding utf8NoBOM
+        $_ | Set-Content -Value $content -Encoding utf8NoBOM
     }
 }
