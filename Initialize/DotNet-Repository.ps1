@@ -83,5 +83,7 @@ if (-not (Test-Path ".gitmodules")) {
     New-Item -ItemType File ".gitmodules" | Out-Null
 }
 
+& git add .
+
 $PSCmdlet.WriteVerbose("Applying line-endings and text encoding to all repository files")
 & ([scriptblock]::Create((Invoke-WebRequest "https://github.com/thnetii/repository-default/raw/master/Fix-Line-Endings/Rewrite-All-Files.ps1" -UseBasicParsing)))
