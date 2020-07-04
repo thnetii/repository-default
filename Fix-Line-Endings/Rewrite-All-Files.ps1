@@ -2,7 +2,7 @@
 param ()
 
 $PSCmdlet.WriteVerbose("Invoking command `"git ls-files`" on repository `"$(Get-Location)`".")
-[string[]]$GitFiles = & git ls-files -moc
+[string[]]$GitFiles = & git ls-files -mc
 
 Get-ChildItem -File -Path $GitFiles | ForEach-Object {
     Write-Host $(Resolve-Path -Relative $_.FullName)
