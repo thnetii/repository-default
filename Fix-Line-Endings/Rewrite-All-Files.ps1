@@ -1,13 +1,26 @@
 [CmdletBinding()]
 param ()
 
-$PSCmdlet.WriteVerbose("Invoking command `"git ls-files`" on repository `"$(Get-Location)`".")
-[string[]]$GitFiles = & git ls-files -mc
-$ExcludePatterns = @(
-    "*.sln",
-    "*.ico",
-    "*.png"
-)
+$PSCmdlet.WriteVerbose("Invoking command `"git ls-files --eol -mc`" on repository `"$(Get-Location)`".")
+[string[]]$GitFilePatterns = & git ls-files --eol -mc
+
+[regex]$GitLsFilesEolRegex = "^(\S+)\s+(\S+)\s+(.*)\s*\t(.*\S)\s*$"
+[string[]]$GitFiles = $GitFilePatterns | ForEach-Object {
+    $GitFileMatch = $GitLsFilesEolRegex.Match($_)
+    $GitFilePath = $GitFileMatch.Groups[4].Value.Trim()
+    $GitWorkEol = $GitFileMatch.Groups[2].Value.Trim()
+    if ($GitWorkEol -like "w/none" -or `
+        $GitWorkEol -like "w/-text") {
+        $PSCmdlet.WriteWarning("Skipping renormalization of `"$GitFilePath`", eolinfo-status `"$GitWorkEol`"")
+        return [string]::Empty
+    }
+    $GitFileAttr = $GitFileMatch.Groups[3].Value.Trim()
+    if ($GitFileAttr -notlike "attr/text=auto*") {
+        $PSCmdlet.WriteWarning("Skipping renormalization of `"$GitFilePath`", eolattr `"$GitFileAttr`" is not `"attr/text=auto`"")
+        return [string]::Empty
+    }
+    return $GitFilePath
+} | Where-Object { -not ([string]::IsNullOrWhiteSpace($_)) }
 
 Get-ChildItem -File -Path $GitFiles | Where-Object {
     $FilePath = $_.FullName
@@ -19,7 +32,7 @@ Get-ChildItem -File -Path $GitFiles | Where-Object {
     if ($PSVersionTable.PSVersion -lt [version]"6.0") {
         $encoding = [System.Text.UTF8Encoding]::new($false) # create UTF8 Encoding with no BOM
         if ($content -and $content.Length -gt 0)
-        { 
+        {
             $PSCmdlet.WriteVerbose("Performing the operation `"WriteAllLines`" on target `"Path: $($_.FullName)`" using text encoding $($encoding.WebName).")
             [System.IO.File]::WriteAllLines($_.FullName, $content, $encoding)
         }
