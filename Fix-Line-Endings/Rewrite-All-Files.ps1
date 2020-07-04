@@ -3,8 +3,16 @@ param ()
 
 $PSCmdlet.WriteVerbose("Invoking command `"git ls-files`" on repository `"$(Get-Location)`".")
 [string[]]$GitFiles = & git ls-files -mc
+$ExcludePatterns = @(
+    "*.sln",
+    "*.ico",
+    "*.png"
+)
 
-Get-ChildItem -File -Path $GitFiles | ForEach-Object {
+Get-ChildItem -File -Path $GitFiles | Where-Object {
+    $FilePath = $_.FullName
+    return -not ($ExcludePatterns | Where-Object { $FilePath -like $_ } | Select-Object -First 1)
+} | ForEach-Object {
     Write-Host $(Resolve-Path -Relative $_.FullName)
     [string[]]$content = $_ | Get-Content
     # PowerShell before PowerShell Core v6.0 does not support utf8NoBOM as Encoding
