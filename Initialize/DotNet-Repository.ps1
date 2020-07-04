@@ -73,12 +73,12 @@ $DotnetMetaSourceProps.Save((Resolve-Path "Directory.Meta.props"))
 $PSCmdlet.WriteVerbose("Adding Dependabot configuration to repository")
 New-Item -ItemType Directory ".dependabot" -Force | Out-Null
 $dependabotConfigFile = Join-Path ".dependabot" "config.yml"
-Invoke-WebRequest "https://github.com/thnetii/repository-default/raw/master/Dependabot/default.config.yml" -UseBasicParsing |`
-    Out-File $dependabotConfigFile
-Invoke-WebRequest "https://github.com/thnetii/repository-default/raw/master/Dependabot/git-submodules.config.yml" -UseBasicParsing |`
-    Out-File $dependabotConfigFile -Append
-Invoke-WebRequest "https://github.com/thnetii/repository-default/raw/master/Dependabot/dotnet-nuget.config.yml" -UseBasicParsing |`
-    Out-File $dependabotConfigFile -Append
+(Invoke-WebRequest "https://github.com/thnetii/repository-default/raw/master/Dependabot/default.config.yml" -UseBasicParsing).Content |`
+    Out-File $dependabotConfigFile -NoNewLine
+(Invoke-WebRequest "https://github.com/thnetii/repository-default/raw/master/Dependabot/git-submodules.config.yml" -UseBasicParsing).Content |`
+    Out-File $dependabotConfigFile -Append -NoNewLine
+(Invoke-WebRequest "https://github.com/thnetii/repository-default/raw/master/Dependabot/dotnet-nuget.config.yml" -UseBasicParsing).Content |`
+    Out-File $dependabotConfigFile -Append -NoNewLine
 if (-not (Test-Path ".gitmodules")) {
     New-Item -ItemType File ".gitmodules" | Out-Null
 }
