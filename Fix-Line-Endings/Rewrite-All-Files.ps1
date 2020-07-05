@@ -11,12 +11,12 @@ $PSCmdlet.WriteVerbose("Invoking command `"git ls-files --eol -mc`" on repositor
     $GitWorkEol = $GitFileMatch.Groups[2].Value.Trim()
     if ($GitWorkEol -like "w/none" -or `
         $GitWorkEol -like "w/-text") {
-        $PSCmdlet.WriteWarning("Skipping renormalization of `"$GitFilePath`", eolinfo-status `"$GitWorkEol`"")
+        $PSCmdlet.WriteVerbose("Skipping renormalization of `"$GitFilePath`", eolinfo-status `"$GitWorkEol`"")
         return [string]::Empty
     }
     $GitFileAttr = $GitFileMatch.Groups[3].Value.Trim()
     if ($GitFileAttr -notlike "attr/text=auto*") {
-        $PSCmdlet.WriteWarning("Skipping renormalization of `"$GitFilePath`", eolattr `"$GitFileAttr`" is not `"attr/text=auto`"")
+        $PSCmdlet.WriteVerbose("Skipping renormalization of `"$GitFilePath`", eolattr `"$GitFileAttr`" is not `"attr/text=auto`"")
         return [string]::Empty
     }
     return $GitFilePath
