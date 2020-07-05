@@ -22,7 +22,7 @@ $PSCmdlet.WriteVerbose("Invoking command `"git ls-files --eol -mc`" on repositor
     return $GitFilePath
 } | Where-Object { -not ([string]::IsNullOrWhiteSpace($_)) }
 
-Get-ChildItem -File -Path $GitFiles | Where-Object {
+Get-ChildItem -File -Hidden -Path $GitFiles | Where-Object {
     $FilePath = $_.FullName
     return -not ($ExcludePatterns | Where-Object { $FilePath -like $_ } | Select-Object -First 1)
 } | ForEach-Object {
