@@ -1,8 +1,8 @@
 [CmdletBinding()]
 param ()
 
-$PSCmdlet.WriteVerbose("Invoking command `"git ls-files --eol -mc`" on repository `"$(Get-Location)`".")
-[string[]]$GitFilePatterns = & git ls-files --eol -mc
+$PSCmdlet.WriteVerbose("Invoking command `"git ls-files --eol -moc`" on repository `"$(Get-Location)`".")
+[string[]]$GitFilePatterns = & git ls-files --eol -moc --exclude-standard
 
 [regex]$GitLsFilesEolRegex = "^(\S+)\s+(\S+)\s+(.*)\s*\t(.*\S)\s*$"
 [string[]]$GitFiles = $GitFilePatterns | ForEach-Object {
