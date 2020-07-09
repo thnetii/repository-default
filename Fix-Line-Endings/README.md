@@ -6,14 +6,8 @@ This can lead to mismatching line endings, especially when on Windows (since the
 
 Execute the following powershell script to recusively read the text content of all files in the current folder and write them back using the current environment's line endings and appliying UTF-8 text encoding without BOM.
 
-## Windows PowerShell
-
-``` bat
-powershell -NoProfile -ExecutionPolicy unrestricted -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; &([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing 'https://github.com/thnetii/repository-default/raw/master/Fix-Line-Endings/Rewrite-All-Files.ps1')))"
-```
-
 ## PowerShell Core
 
 ``` sh
-pwsh -NoProfile -ExecutionPolicy unrestricted -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; &([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing 'https://github.com/thnetii/repository-default/raw/master/Fix-Line-Endings/Rewrite-All-Files.ps1')))"
+pwsh -NoProfile -ExecutionPolicy unrestricted -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; &([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing 'https://github.com/thnetii/repository-default/raw/master/Fix-Line-Endings/Rewrite-All-Files.ps1'))) -Verbose"
 ```
