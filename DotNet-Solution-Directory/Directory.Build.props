@@ -4,6 +4,9 @@
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <DebugType>portable</DebugType>
   </PropertyGroup>
+ <PropertyGroup Label="C# Language Version">
+  <LangVersion>8</LangVersion>
+ </PropertyGroup>
   <PropertyGroup>
     <TargetFramework Condition="'$(BuildDefaultTargetFramework)'!=''">netstandard2.0</TargetFramework>
   </PropertyGroup>
@@ -47,5 +50,8 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup Label="Nullable helper library for Pre-.NET Standard 2.1">
+    <PackageReference Include="Nullable" Version="1.2.1" PrivateAssets="All" />
   </ItemGroup>
 </Project>
