@@ -48,8 +48,7 @@ if ($DotnetMetaProps) {
     "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/AllRules.ruleset",
     "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Build.props",
     "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Meta.props",
-    "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Version.props",
-    "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Build.targets"
+    "https://github.com/thnetii/repository-default/raw/master/DotNet-Solution-Directory/Directory.Version.props"
 )
 $DotnetFileUris | ForEach-Object {
     $DotnetFileName = $_.Segments | Select-Object -Last 1
