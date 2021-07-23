@@ -4,24 +4,21 @@ Contains git repository root dotfiles.
 
 There are two of them
 
-* [`.gitignore`](#gitignore-file)
-* [`.gitatrributes`](#gitattributes-file)
+- [Git files](#git-files)
+  - [`.gitattributes` file](#gitattributes-file)
+  - [`.gitignore` file](#gitignore-file)
 
 ## `.gitattributes` file
 
 Download command:
 
 ``` sh
-curl -o .gitattributes -LRJ "https://github.com/thnetii/repository-default/raw/master/GitFiles/.gitattributes"
+curl -o .gitattributes -LRJ "https://github.com/Dotnet-Boxed/Templates/raw/main/Source/GitattributesTemplate/.gitattributes"
 ```
 
 The `.gitattributes` file is a dotfile that instructs Git on how to handle file checkouts, commits and changes for files in your repository.
 
-The file was originally created by Visual Studio 2017, and I have subsequently added by own attributes at the end.
-
-Node.js, NPM and Yarn all *really* want to use UNIX-like line endings (LF) even when on Windows. This causes false positives on changes to these files.
-
-Therefore I enforce LF line-endings by Git for the affected files. On Linux, these settings have no effect.
+The file is provided from the gitattributes template in the Dotnet-Boxed template.
 
 ## `.gitignore` file
 
