@@ -38,5 +38,8 @@ indent_size = 2
 [CMakeLists.txt]
 indent_size = 2
 
+[*.{rest,http}]
+indent_size = 2
+
 [*.{md,markdown}]
 trim_trailing_whitespace = false
