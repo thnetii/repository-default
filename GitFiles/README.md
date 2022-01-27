@@ -27,5 +27,5 @@ This downloads the most recent version of the Visual Studio `.gitignore` on the 
 Download command:
 
 ``` sh
-curl -o .gitignore -LRJ "https://github.com/github/gitignore/raw/master/VisualStudio.gitignore"
+curl -o .gitignore -LRJ "https://github.com/github/gitignore/raw/main/VisualStudio.gitignore"
 ```
