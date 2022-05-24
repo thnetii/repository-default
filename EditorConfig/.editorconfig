@@ -20,7 +20,7 @@ indent_size = 2
 [*.{js,jsx,mjs,cjs,ts,tsx,vue,css,styl,html}]
 indent_size = 2
 
-[*.{*proj,targets,props}]
+[*.{*proj,targets,props,resx}]
 indent_size = 2
 
 [{{packages,nuget}.config,*.nuspec}]
