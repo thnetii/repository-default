@@ -53,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        name: Chekout ${{ context.repository }}@${{ context.ref || context.sha }}
+        name: Chekout ${{ github.repository }}@${{ context.ref || context.sha }}
       - uses: ./.github/actions/gh-repo-create
         with:
           repo-name: ${{ inputs.repo-name }}
