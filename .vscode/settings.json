@@ -1,0 +1,9 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.workingDirectories": [
+    ".github/actions"
+  ],
+  "prettier.enable": true
+}

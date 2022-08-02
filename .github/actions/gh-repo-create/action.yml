@@ -1,0 +1,42 @@
+name: Create GitHub repository
+description: ''
+author: '@thnetii'
+inputs:
+  repo-name:
+    required: true
+    description: ''
+  description:
+    required: false
+    default: ''
+    description: ''
+  disable-issues:
+    required: false
+    default: 'false'
+    description: ''
+  disable-wiki:
+    required: false
+    default: 'false'
+    description: ''
+  gitignore:
+    required: false
+    default: ''
+    description: ''
+  license:
+    required: false
+    default: ''
+    description: ''
+  visibility:
+    required: false
+    default: ''
+    description: ''
+runs:
+  using: composite
+  steps:
+    - uses: actions/github-script@v6
+      with:
+        script: |
+          require(process.env['GITHUB_ACTION_PATH'])(
+            { core, exec }
+          );
+      env:
+        GITHUB_ACTION_PATH: ${{ github.action_path }}

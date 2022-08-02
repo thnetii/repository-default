@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "editorconfig.editorconfig",
+        "codezombiech.gitignore",
+        "redhat.vscode-yaml",
+        "ms-vscode.powershell",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+    ]
+}

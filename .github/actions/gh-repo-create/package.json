@@ -1,0 +1,23 @@
+{
+  "name": "@thnetii/repository-default-gh-repo-create-action",
+  "version": "0.0.0",
+  "private": true,
+  "author": "TH-NETII Rasch Solutions <fredrik.rasch@gmail.com> (https://thnetii.td.org.uit.no)",
+  "maintainers": [
+    "Fredrik Høisæther Rasch <fredrik.rasch@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thnetii/repository-default.git",
+    "directory": ".github/actions/repo-create"
+  },
+  "bugs": {
+    "url": "https://github.com/thnetii/repository-default/issues"
+  },
+  "homepage": "https://github.com/thnetii/repository-default#readme",
+  "license": "MIT",
+  "devDependencies": {
+    "@actions/core": "^1.9.0",
+    "@actions/exec": "^1.1.1"
+  }
+}
