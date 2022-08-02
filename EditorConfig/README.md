@@ -3,7 +3,7 @@
 Download command:
 
 ``` sh
-curl -o .editorconfig -LRJ "https://github.com/thnetii/repository-default/raw/master/EditorConfig/.editorconfig"
+curl -o .editorconfig -LRJ "https://github.com/thnetii/repository-default/raw/main/EditorConfig/.editorconfig"
 ```
 
 From [the EditorConfig website](https://editorconfig.org/)

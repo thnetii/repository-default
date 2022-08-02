@@ -9,5 +9,5 @@ Execute the following powershell script to recusively read the text content of a
 ## PowerShell Core
 
 ``` sh
-pwsh -NoProfile -ExecutionPolicy unrestricted -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; &([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing 'https://github.com/thnetii/repository-default/raw/master/Fix-Line-Endings/Rewrite-All-Files.ps1'))) -Verbose"
+pwsh -NoProfile -ExecutionPolicy unrestricted -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; &([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing 'https://github.com/thnetii/repository-default/raw/main/Fix-Line-Endings/Rewrite-All-Files.ps1'))) -Verbose"
 ```
