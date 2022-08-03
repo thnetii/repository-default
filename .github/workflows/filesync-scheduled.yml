@@ -1,0 +1,10 @@
+on:
+  schedule:
+    - cron: '5 7 * * *'
+  workflow_dispatch:
+    inputs: {}
+
+jobs:
+  workflow_call-info:
+    uses: thnetii/repository-default/.github/workflows/workflow_call-info-reusable.yml@main
+    name: workflow_call info
