@@ -71,4 +71,6 @@ jobs:
           gitignore: ${{ inputs.gitignore }}
           license: ${{ inputs.license }}
           visibility: ${{ inputs.visibility }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         name: gh repo create ${{ inputs.repo-name }}
