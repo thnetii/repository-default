@@ -6,5 +6,4 @@ on:
 
 jobs:
   workflow_call-info:
-    uses: thnetii/repository-default/.github/workflows/workflow_call-info-reusable.yml@main
-    name: workflow_call info
+    uses: thnetii/repository-default/.github/workflows/filesync-noop-reusable.yml@main

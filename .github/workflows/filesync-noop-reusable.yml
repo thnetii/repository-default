@@ -1,0 +1,54 @@
+on:
+  workflow_call:
+    inputs:
+      origin-repository:
+        type: string
+        required: false
+        description: |
+          The owner and repository name of the repository from which the files
+          are synced.
+
+          For example, `Codertocat/Hello-World`.
+        default: thnetii/repository-default
+      origin-ref:
+        type: string
+        required: false
+        description: |
+          The ref to checkout from the origin repository.
+
+          If omitted or empty, the default branch of the repository is used.
+        default: ''
+
+jobs:
+  workflow_call-info:
+    runs-on: ubuntu-latest
+    steps:
+      - run: Write-Host $ENV:ACTIONS_CONTEXT_INPUTS_FROM_JSON
+        name: 'GitHub actions context: inputs'
+        shell: pwsh
+        env:
+          ACTIONS_CONTEXT_INPUTS_FROM_JSON: ${{ toJSON(inputs) }}
+      - run: Write-Host $ENV:ACTIONS_CONTEXT_GITHUB_FROM_JSON
+        name: 'GitHub actions context: github'
+        shell: pwsh
+        env:
+          ACTIONS_CONTEXT_GITHUB_FROM_JSON: ${{ toJSON(github) }}
+      - run: Write-Host $ENV:ACTIONS_CONTEXT_JOB_FROM_JSON
+        name: 'GitHub actions context: job'
+        shell: pwsh
+        env:
+          ACTIONS_CONTEXT_JOB_FROM_JSON: ${{ toJSON(job) }}
+
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: ${{ inputs.origin-repository }}
+          ref: ${{ inputs.origin-ref }}
+          path: origin
+        name: Checkout ${{ inputs.origin-repository }}@${{ inputs.origin-ref || 'HEAD' }} to './origin'
+      - uses: actions/checkout@v3
+        with:
+          path: target
+        name: Checkout ${{ github.repository }}@${{ github.ref || github.sha }} to './target'
