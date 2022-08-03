@@ -30,13 +30,5 @@ inputs:
     default: ''
     description: ''
 runs:
-  using: composite
-  steps:
-    - uses: actions/github-script@v6
-      with:
-        script: |
-          require(`${process.env['GITHUB_ACTION_PATH']}/action.js`)(
-            { core, exec }
-          );
-      env:
-        GITHUB_ACTION_PATH: ${{ github.action_path }}
+  using: node16
+  main: action.js

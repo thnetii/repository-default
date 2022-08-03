@@ -54,6 +54,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: Chekout ${{ github.repository }}@${{ github.ref || github.sha }}
+      - uses: thnetii/gh-actions/src/gh-actions-npm@main
+        with:
+          arguments: |
+            clean-install
+            --workspace=gh-repo-create
+            --omit=dev
+          working-directory: .github/actions
+        name: npm clean-install --workspace .github/actions/gh-repo-create --omit=dev
       - uses: ./.github/actions/gh-repo-create
         with:
           repo-name: ${{ inputs.repo-name }}
@@ -63,3 +71,4 @@ jobs:
           gitignore: ${{ inputs.gitignore }}
           license: ${{ inputs.license }}
           visibility: ${{ inputs.visibility }}
+        name: gh repo create ${{ inputs.repo-name }}
