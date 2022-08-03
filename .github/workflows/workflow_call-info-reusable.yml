@@ -16,3 +16,8 @@ jobs:
         shell: pwsh
         env:
           ACTIONS_CONTEXT_GITHUB_FROM_JSON: ${{ toJSON(github) }}
+      - run: Write-Host $ENV:ACTIONS_CONTEXT_JOB_FROM_JSON
+        name: 'GitHub actions context: job'
+        shell: pwsh
+        env:
+          ACTIONS_CONTEXT_JOB_FROM_JSON: ${{ toJSON(job) }}
