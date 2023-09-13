@@ -42,13 +42,13 @@ jobs:
   noop:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           repository: ${{ inputs.origin-repository }}
           ref: ${{ inputs.origin-ref }}
           path: origin
         name: Checkout ${{ inputs.origin-repository }}@${{ inputs.origin-ref || 'HEAD' }} to './origin'
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: target
         name: Checkout ${{ github.repository }}@${{ github.ref || github.sha }} to './target'
